@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, wait} from "@testing-library/react"
+import {render, wait,fireEvent} from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import App from './App';
 import {fetchShow} from './api';
@@ -606,9 +606,11 @@ const episodeData = {
         }
 }
 
+
+
 jest.mock('./api');  
 test('fetching data', async ()=>{
-    
+  console.log('mockapi',fetchShow)  ; 
  fetchShow.mockResolvedValueOnce(episodeData);
  
     const {getByText, getAllByText, debug} =  render(<App />)
